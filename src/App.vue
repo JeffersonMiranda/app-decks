@@ -22,7 +22,11 @@ export default class App extends Vue {}
 
 html, body
   margin: 0
+  height: 100%
 
 #app
   margin: 0
+  height: 100%
+  display: flex
+  flex-flow: column
 </style>
