@@ -9,7 +9,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
-export default class Header extends Vue {
+export default class CardField extends Vue {
   @Prop(String) readonly fieldLabel!: string
   @Prop({ default: 'Enter card' }) readonly fieldPlaceholder!: string
 }
