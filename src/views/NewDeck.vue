@@ -7,6 +7,10 @@
         <CardField v-for="(item, index) in maxItems" :key="index" :fieldLabel="getFieldLabel(index)"/>
       </div>
 
+      <div class="rotation-card-container">
+        <RotationField fieldLabel="Rotation Card"/>
+      </div>
+
     </div>
   </div>
 </template>
@@ -15,11 +19,13 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import Header from '@/components/Header.vue'
 import CardField from '@/components/CardField.vue'
+import RotationField from '@/components/RotationField.vue'
 
 @Component({
   components: {
     Header,
-    CardField
+    CardField,
+    RotationField
   }
 })
 export default class NewDeck extends Vue {
@@ -35,10 +41,19 @@ export default class NewDeck extends Vue {
 <style lang="sass" scoped>
 @import '@/style/_vars'
 
-.cards-field-container 
-  display: flex
-  flex-wrap: wrap
-  padding: 50px 40px
-  justify-content: space-between
+.content
   background-color: $color-light-blue
+  flex: 1 1 auto
+
+  .cards-field-container 
+    display: flex
+    flex-wrap: wrap
+    padding: 50px 40px
+    justify-content: space-between
+
+  .rotation-card-container
+    max-width: 650px
+    margin: 50px auto auto
+    display: flex
+    justify-content: center
 </style>
