@@ -18,6 +18,7 @@ export default class CardField extends Vue {
 
 <style lang="sass" scoped>
 @import '@/style/_vars'
+@import '@/style/mixins/_default-input'
 
 .card-field
   max-width: 250px
@@ -30,12 +31,5 @@ export default class CardField extends Vue {
     margin-bottom: 5px
   
   .card-field-input
-    width: 100%
-    padding: 10px 5px
-    display: flex
-    flex-direction: column
-    border-radius: 2px
-    border: 1px solid $color-light-grey
-    color: $color-light-grey
-
+    @include default-input()
 </style>
