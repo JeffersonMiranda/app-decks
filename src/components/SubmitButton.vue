@@ -6,13 +6,29 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
+import { namespace } from 'vuex-class'
+
+const Deck = namespace('Deck')
+
 
 @Component
 export default class SubmitButton extends Vue {
-  @Prop(String) readonly buttonText!: string
+  @Prop(String) readonly buttonText!: String
+
+  @Deck.Action
+  public addNewDeck!:() => any
+  
+  @Deck.Action
+  public addId!:(id: Number) => void
+
+  @Deck.Getter
+  public getCards!:() => Array<String>
 
   public submit() {
-    console.log('submit')
+    this.addNewDeck().then((response) => {
+      const deckId = response.data.deck_id
+      this.addId(deckId)
+    })
   }
 }
 

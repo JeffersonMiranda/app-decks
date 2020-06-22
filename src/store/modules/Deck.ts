@@ -1,13 +1,20 @@
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
+import DeckService from '@/services/DeckService'
 
 @Module({
   namespaced: true
 })
 export default class Deck extends VuexModule {
+  public id!: Number
   public cards: Array<string> = []
   public cardsSuits: Array<string> = ['H', 'D', 'C', 'S']
   public cardsValues: Array<string> = ['2', 'A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3']
   public rotationCard: String = ''
+
+  @Mutation
+  public ADD_ID(payload: any): void {
+    this.id = payload
+  }
 
   @Mutation
   public ADD_CARD(payload: any): void {
@@ -20,6 +27,11 @@ export default class Deck extends VuexModule {
   }
 
   @Action({ rawError: true })
+  public addId(payload: any): void {
+    this.context.commit('ADD_ID', payload)
+  }
+
+  @Action({ rawError: true })
   public addCard(payload: any): void {
     this.context.commit('ADD_CARD', payload)
   }
@@ -27,6 +39,13 @@ export default class Deck extends VuexModule {
   @Action({ rawError: true })
   public addRotationCard(payload: any): void {
     this.context.commit('ADD_ROTATION_CARD', payload)
+  }
+
+  @Action({ rawError: true })
+  public addNewDeck() {
+    const service = new DeckService()
+
+    return service.createNewDeck()
   }
 
   get getCardByIndex(): Function {
@@ -39,11 +58,15 @@ export default class Deck extends VuexModule {
     return this.rotationCard
   }
 
-  get getCardsSuits(): Array<string> {
+  get getCardsSuits(): Array<String> {
     return this.cardsSuits
   }
 
-  get getCardsValues(): Array<string> {
+  get getCardsValues(): Array<String> {
     return this.cardsValues
+  }
+
+  get getCards(): Array<String> {
+    return this.cards
   }
 }
