@@ -1,19 +1,21 @@
 <template>
   <div class="card-field">
-    <label class="card-field-label" for=""> {{ fieldLabel }} </label>
+    <label class="card-field-label"> {{ fieldLabel }} </label>
     <input class="card-field-input" type="text" v-model="cardValue" :placeholder="fieldPlaceholder"/>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, PropSync } from 'vue-property-decorator'
+import { Vue, Component, Prop, PropSync, Mixins } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
+import { replaceStringCharater, getFirstTwoCharacters, isCardValueCorrectFormat, removeInvalidCharacters } from '@/utils/index.js'
+import CardMixin from '@/mixins/CardMixin'
 
 const Deck = namespace('Deck')
 
 @Component
-export default class CardField extends Vue {
-  @Prop(String) readonly fieldLabel!: Number
+export default class CardField extends Mixins(CardMixin) {
+  @Prop(String) readonly fieldLabel!: String
   @Prop({ default: 'Enter card' }) readonly fieldPlaceholder!: Number
   @Prop(Number) readonly fieldOrder!: Number
 
@@ -27,8 +29,17 @@ export default class CardField extends Vue {
   @Deck.Getter
   public getCardByIndex!:(index: Number) => String
 
-  set cardValue(value: String) {
-    this.addCard({ newCard: value, index: this.fieldOrder })
+  set cardValue(cardValue: String) {
+    cardValue = cardValue.toUpperCase()
+
+    if (!isCardValueCorrectFormat(cardValue)) {
+      this.addCard({ newCard: getFirstTwoCharacters(cardValue), index: this.fieldOrder })
+      return
+    }
+
+    cardValue = this.formartCardValues(cardValue)
+
+    this.addCard({ newCard: cardValue, index: this.fieldOrder })
   }
 
   get cardValue(): String {
