@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="button button--blue" type="submit"> {{ buttonText }} </button>
+    <button class="button button--blue" type="submit" @click.prevent="submit()"> {{ buttonText }} </button>
   </div>
 </template>
 
@@ -10,6 +10,10 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 @Component
 export default class SubmitButton extends Vue {
   @Prop(String) readonly buttonText!: string
+
+  public submit() {
+    console.log('submit')
+  }
 }
 
 </script>
