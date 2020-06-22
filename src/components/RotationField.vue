@@ -27,10 +27,10 @@ export default class RotationField extends Vue {
 
   .rotation-card-field-label
     color: $color-black
-    font-size: 2.5rem;
-    margin-right: 25px;
+    font-size: 2.5rem
+    margin-right: 25px
   
   .rotation-card-field-input
     @include default-input()
-    max-width: 250px;
+    max-width: 250px
 </style>
