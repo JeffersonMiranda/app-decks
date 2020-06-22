@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header title="CARDS"/>
-    <div class="content">
+    <div class="app-content">
 
       <div class="cards-field-container">
         <CardField v-for="(item, index) in maxItems" :key="index" :fieldLabel="getFieldLabel(index)"/>
@@ -9,6 +9,10 @@
 
       <div class="rotation-card-container">
         <RotationField fieldLabel="Rotation Card"/>
+      </div>
+
+      <div class="submit-button-container">
+        <SubmitButton buttonText="Submit" />
       </div>
 
     </div>
@@ -20,12 +24,14 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import Header from '@/components/Header.vue'
 import CardField from '@/components/CardField.vue'
 import RotationField from '@/components/RotationField.vue'
+import SubmitButton from '@/components/SubmitButton.vue'
 
 @Component({
   components: {
     Header,
     CardField,
-    RotationField
+    RotationField,
+    SubmitButton
   }
 })
 export default class NewDeck extends Vue {
@@ -41,7 +47,7 @@ export default class NewDeck extends Vue {
 <style lang="sass" scoped>
 @import '@/style/_variables'
 
-.content
+.app-content
   background-color: $color-light-blue
   flex: 1 1 auto
 
@@ -56,4 +62,12 @@ export default class NewDeck extends Vue {
     margin: 50px auto auto
     display: flex
     justify-content: center
+
+  .submit-button-container
+    max-width: 200px
+    margin: auto
+    position: absolute
+    bottom: 100px
+    left: 0
+    right: 0
 </style>
