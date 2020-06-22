@@ -15,7 +15,7 @@ export default class Header extends Vue {
 </script>
 
 <style lang="sass" scoped>
-@import '@/style/_vars'
+@import '@/style/_variables'
 
 .header
   min-height: 150px

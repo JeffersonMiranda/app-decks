@@ -18,7 +18,7 @@ export default class App extends Vue {}
 </script>
 
 <style lang="sass">
-@import '@/style/_vars'
+@import '@/style/_variables'
 
 html, body
   margin: 0

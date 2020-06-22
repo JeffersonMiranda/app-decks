@@ -39,7 +39,7 @@ export default class NewDeck extends Vue {
 </script>
 
 <style lang="sass" scoped>
-@import '@/style/_vars'
+@import '@/style/_variables'
 
 .content
   background-color: $color-light-blue

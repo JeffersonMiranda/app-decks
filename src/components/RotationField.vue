@@ -17,7 +17,7 @@ export default class RotationField extends Vue {
 </script>
 
 <style lang="sass" scoped>
-@import '@/style/_vars'
+@import '@/style/_variables'
 @import '@/style/mixins/_default-input'
 
 .rotation-card-field
