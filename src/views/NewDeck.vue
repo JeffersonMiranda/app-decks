@@ -4,7 +4,7 @@
     <div class="app-content">
 
       <div class="cards-field-container">
-        <CardField v-for="(item, index) in maxItems" :key="index" :fieldLabel="getFieldLabel(index)"/>
+        <CardField v-for="(item, index) in maxItems" :key="index" :fieldOrder="index" :fieldLabel="getFieldLabel(index)"/>
       </div>
 
       <div class="rotation-card-container">

@@ -10,8 +10,9 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class CardField extends Vue {
-  @Prop(String) readonly fieldLabel!: string
-  @Prop({ default: 'Enter card' }) readonly fieldPlaceholder!: string
+  @Prop(String) readonly fieldLabel!: Number
+  @Prop({ default: 'Enter card' }) readonly fieldPlaceholder!: Number
+  @Prop(Number) readonly fieldOrder!: Number
 }
 
 </script>
