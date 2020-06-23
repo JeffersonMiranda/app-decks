@@ -9,6 +9,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
 const Deck = namespace('Deck')
+const Piles = namespace('Piles')
 
 
 @Component
@@ -21,13 +22,17 @@ export default class SubmitButton extends Vue {
   @Deck.Action
   public addId!:(id: Number) => void
 
+  @Piles.Action
+  public addNewPile!:(payload) => void
+
   @Deck.Getter
-  public getCards!:() => Array<String>
+  public getCards!:() => Object
 
   public submit() {
     this.addNewDeck().then((response) => {
       const deckId = response.data.deck_id
       this.addId(deckId)
+      this.addNewPile(this.getCards)
     })
   }
 }
