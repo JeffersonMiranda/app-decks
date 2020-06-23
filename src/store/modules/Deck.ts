@@ -66,7 +66,7 @@ export default class Deck extends VuexModule {
     return this.cardsValues
   }
 
-  get getCards(): Array<String> {
-    return this.cards
+  get getCards(): Object {
+    return { cards: this.cards, rotationCard: this.rotationCard }
   }
 }
