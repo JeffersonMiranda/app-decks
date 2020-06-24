@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="deck-section"> 
     <Header title="Ordered Piles"/>
     <div class="app-content">
 
@@ -79,7 +79,7 @@ export default class Deck extends Vue {
 <style lang="sass" scoped>
 @import '@/style/_variables'
 
-.app-content
+.deck-section
   background-color: $color-light-blue
   flex: 1 1 auto
 

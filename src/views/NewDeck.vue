@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="new-deck-section">
     <Header title="CARDS"/>
     <div class="app-content">
 
@@ -47,7 +47,7 @@ export default class NewDeck extends Vue {
 <style lang="sass" scoped>
 @import '@/style/_variables'
 
-.app-content
+.new-deck-section
   background-color: $color-light-blue
   flex: 1 1 auto
 
