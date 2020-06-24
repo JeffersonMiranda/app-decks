@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NewDeck/>
+    <router-view/>
   </div>
 </template>
 

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import App from '@/App.vue'
 import NewDeck from '@/views/NewDeck.vue'
+import Deck from '@/views/Deck.vue'
 
 Vue.use(VueRouter)
 
@@ -14,8 +15,14 @@ const routes: Array<RouteConfig> = [
     children: [
       {
         path: '/deck/new',
-        name: 'NewDeck',
+        name: 'newDeck',
         component: NewDeck
+      },
+      {
+        path: '/deck/:deckId',
+        name: 'deck',
+        component: Deck,
+        props: true
       }
     ]
   },
