@@ -34,5 +34,5 @@ export default class CardBlock extends Vue {
     margin-right: 10px
 
   .card-block-suit
-    max-width: 20px
+    max-width: 25px
 </style>
