@@ -1,4 +1,5 @@
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
+import DeckService from '@/services/DeckService'
 
 @Module({
   namespaced: true
@@ -12,11 +13,17 @@ export default class Piles extends VuexModule {
   }
 
   @Action({ rawError: true })
-  public addNewPile(payload: any) {
-    this.context.commit('ADD_PILE', payload)
+  public async addNewPile(payload: any) {
+    const service = new DeckService()
+
+    return service.addCardsToPile(payload.id, payload.cards)
+            .then(response => {
+              this.context.commit('ADD_PILE', payload)
+            })
+
   }
 
-  get getDeckById(): Function {
+  get getPileById(): Function {
     return (pileId: number) => {
       return this.piles.find(pile => pile.id === pileId)
     }

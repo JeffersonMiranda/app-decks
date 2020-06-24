@@ -5,7 +5,7 @@ import DeckService from '@/services/DeckService'
   namespaced: true
 })
 export default class Deck extends VuexModule {
-  public id!: Number
+  public id: String = ''
   public cards: Array<string> = []
   public cardsSuits: Array<string> = ['H', 'D', 'C', 'S']
   public cardsValues: Array<string> = ['2', 'A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3']
@@ -67,6 +67,6 @@ export default class Deck extends VuexModule {
   }
 
   get getCards(): Object {
-    return { cards: this.cards, rotationCard: this.rotationCard }
+    return { cards: this.cards.filter(card => card), rotationCard: this.rotationCard, id: this.id }
   }
 }
