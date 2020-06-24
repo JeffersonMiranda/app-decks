@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <Header title="Ordered Piles"/>
     <div class="app-content">
 

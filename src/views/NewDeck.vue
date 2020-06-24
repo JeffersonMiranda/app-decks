@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <Header title="CARDS"/>
     <div class="app-content">
 
