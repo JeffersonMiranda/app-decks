@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header title="CARDS"/>
+    <Header title="Ordered Piles"/>
     <div class="app-content">
 
       <div class="cards-container">
