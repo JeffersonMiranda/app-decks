@@ -11,7 +11,6 @@ import { namespace } from 'vuex-class'
 const Deck = namespace('Deck')
 const Piles = namespace('Piles')
 
-
 @Component
 export default class SubmitButton extends Vue {
   @Prop(String) readonly buttonText!: String
@@ -23,7 +22,7 @@ export default class SubmitButton extends Vue {
   public addId!:(id: Number) => void
 
   @Piles.Action
-  public addNewPile!:(payload) => void
+  public addNewPile!:(payload) => any
 
   @Deck.Getter
   public getCards!:() => Object
@@ -32,7 +31,10 @@ export default class SubmitButton extends Vue {
     this.addNewDeck().then((response) => {
       const deckId = response.data.deck_id
       this.addId(deckId)
-      this.addNewPile(this.getCards)
+      this.addNewPile(this.getCards).then(()=> {
+        this.$router.push({ name: 'deck', params: { deckId } })
+
+      })
     })
   }
 }
